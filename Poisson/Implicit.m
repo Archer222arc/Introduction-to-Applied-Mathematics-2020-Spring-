@@ -1,0 +1,22 @@
+function output = Implicit(U_0,opt)
+%Implicit
+tic;
+if ~isfield(opt,'h');   opt.h = 1/128;      end
+if ~isfield(opt,'k');   opt.h = 1/512;      end
+if ~isfield(opt,'time');opt.time = 1/16;    end
+n = 1/opt.h;
+grid_size = size(U_0);
+vec_size = [prod(grid_size),1];
+x = (1:grid_size(2))'*opt.h;
+y = (1:grid_size(1))'*opt.h;
+U_kron = reshape(U_0,vec_size);
+Dif = Generate_Dif_2d(grid_size,opt.h);
+A = speye(prod(grid_size))-opt.k*Generate_Dif_2d(grid_size,opt.h);
+for i = 1 : floor(opt.time/opt.k)
+    U_kron = A\U_kron;
+    surf(x,y,reshape(U_kron,grid_size));
+    shading interp;
+    drawnow;
+end
+output.cost = toc;
+output.U = reshape(U_kron,grid_size);
