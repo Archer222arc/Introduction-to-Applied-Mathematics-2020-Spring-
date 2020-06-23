@@ -3,10 +3,11 @@ function [L,f] = Generate_Dif_adap(grid)
 num = max(size(grid));
 L = zeros(num);
 dir = [1,0;0,-1;-1,0;0,1];
+unit_grid = unitgrid(grid);
 for i = 1 : num
     u = grid(i,:);
     x = u(1); y = u(2);
-    output = ishang(grid,x,y);
+    output = ishang(grid,unit_grid,x,y);
     type = output.type;
     h = output.dis;
     n = output.n;

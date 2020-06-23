@@ -1,4 +1,4 @@
-function output = ishang(grid,x,y)
+function output = ishang(grid,unit_grid,x,y)
 %检查是否悬点,type 类型，bool 为是否悬点， d为最短距离， n为邻居(关联点)排列为东南西北
 %type 1 为 4个细单元的公共顶点
 %type 2 为 悬点 逆时针输出方向
@@ -28,7 +28,6 @@ if flag == 1
     return;
 end
 %下面判定是否为悬点
-unit_grid = unitgrid(grid);
 if length(find(d_min==d)) ~= 3
     output.type = 3;
     output.dis = d;

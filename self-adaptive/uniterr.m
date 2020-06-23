@@ -1,4 +1,4 @@
-function eta = uniterr(grid,unit,u)
+function eta = uniterr(grid,unit_grid,unit,u)
 %单位格上的误差，unit存储右上开始顺时针4个顶点坐标
 g = @(r,theta)((2*sin((2*theta)/3)*(r^2*cos(theta)^2 - 1)*(r^2*sin(theta)^2 - 1))/(3*r^(1/3)) + 2*r^(5/3)*sin((2*theta)/3)*cos(theta)^2*(r^2*sin(theta)^2 - 1) + 2*r^(5/3)*sin((2*theta)/3)*sin(theta)^2*(r^2*cos(theta)^2 - 1))/r - ((4*r^(2/3)*sin((2*theta)/3)*(r^2*cos(theta)^2 - 1)*(r^2*sin(theta)^2 - 1))/9 - 2*r^(8/3)*sin((2*theta)/3)*cos(theta)^2*(r^2*cos(theta)^2 - 1) + 2*r^(8/3)*sin((2*theta)/3)*cos(theta)^2*(r^2*sin(theta)^2 - 1) + 2*r^(8/3)*sin((2*theta)/3)*sin(theta)^2*(r^2*cos(theta)^2 - 1) - 2*r^(8/3)*sin((2*theta)/3)*sin(theta)^2*(r^2*sin(theta)^2 - 1) + 8*r^(14/3)*sin((2*theta)/3)*cos(theta)^2*sin(theta)^2 - (8*r^(8/3)*cos((2*theta)/3)*cos(theta)*sin(theta)*(r^2*cos(theta)^2 - 1))/3 + (8*r^(8/3)*cos((2*theta)/3)*cos(theta)*sin(theta)*(r^2*sin(theta)^2 - 1))/3)/r^2 - (2*sin((2*theta)/3)*(r^2*cos(theta)^2 - 1)*(r^2*sin(theta)^2 - 1))/(9*r^(4/3)) + (14*r^(2/3)*sin((2*theta)/3)*cos(theta)^2*(r^2*sin(theta)^2 - 1))/3 + (14*r^(2/3)*sin((2*theta)/3)*sin(theta)^2*(r^2*cos(theta)^2 - 1))/3 + 8*r^(8/3)*sin((2*theta)/3)*cos(theta)^2*sin(theta)^2;
 r = @(x,y) sqrt(x^2+y^2);
@@ -26,7 +26,7 @@ end
 for i = 1:4   
     j = mod(i+1,4); if j == 0; j = 4;end
     if isedge(un(i,1),un(i,2)) && isedge(un(j,1),un(j,2));  continue;   end
-    if ishang(grid,un(i,1),un(i,2)).type ~= 2 && ishang(grid,un(j,1),un(j,2)).type ~= 2
+    if ishang(grid,unit_grid,un(i,1),un(i,2)).type ~= 2 && ishang(grid,unit_grid,un(j,1),un(j,2)).type ~= 2
         %两侧都是短边
         if find(ismember(grid,(un(i,:)+un(j,:))/2,'rows')) == 0 
             v = un(i,:);
