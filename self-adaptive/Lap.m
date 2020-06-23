@@ -1,0 +1,6 @@
+function u = Lap(x,y);
+g = @(r,theta)((2*sin((2*theta)/3)*(r^2*cos(theta)^2 - 1)*(r^2*sin(theta)^2 - 1))/(3*r^(1/3)) + 2*r^(5/3)*sin((2*theta)/3)*cos(theta)^2*(r^2*sin(theta)^2 - 1) + 2*r^(5/3)*sin((2*theta)/3)*sin(theta)^2*(r^2*cos(theta)^2 - 1))/r - ((4*r^(2/3)*sin((2*theta)/3)*(r^2*cos(theta)^2 - 1)*(r^2*sin(theta)^2 - 1))/9 - 2*r^(8/3)*sin((2*theta)/3)*cos(theta)^2*(r^2*cos(theta)^2 - 1) + 2*r^(8/3)*sin((2*theta)/3)*cos(theta)^2*(r^2*sin(theta)^2 - 1) + 2*r^(8/3)*sin((2*theta)/3)*sin(theta)^2*(r^2*cos(theta)^2 - 1) - 2*r^(8/3)*sin((2*theta)/3)*sin(theta)^2*(r^2*sin(theta)^2 - 1) + 8*r^(14/3)*sin((2*theta)/3)*cos(theta)^2*sin(theta)^2 - (8*r^(8/3)*cos((2*theta)/3)*cos(theta)*sin(theta)*(r^2*cos(theta)^2 - 1))/3 + (8*r^(8/3)*cos((2*theta)/3)*cos(theta)*sin(theta)*(r^2*sin(theta)^2 - 1))/3)/r^2 - (2*sin((2*theta)/3)*(r^2*cos(theta)^2 - 1)*(r^2*sin(theta)^2 - 1))/(9*r^(4/3)) + (14*r^(2/3)*sin((2*theta)/3)*cos(theta)^2*(r^2*sin(theta)^2 - 1))/3 + (14*r^(2/3)*sin((2*theta)/3)*sin(theta)^2*(r^2*cos(theta)^2 - 1))/3 + 8*r^(8/3)*sin((2*theta)/3)*cos(theta)^2*sin(theta)^2;
+r = @(x,y) sqrt(x^2+y^2);
+theta = @(x,y)mytheta(x,y);
+if x == 0 && y == 0;   u = 0;
+else u= g(r(x,y),theta(x,y))^2;   end 
