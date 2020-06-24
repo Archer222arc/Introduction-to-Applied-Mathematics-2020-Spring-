@@ -12,7 +12,7 @@ eta = zeros(num,1);
 for i = 1:num
     U  = grid_unit{i};
 %     patch('Faces',[1,2,3,4],'Vertices',U,'EdgeColor','blue','FaceColor','none','LineWidth',1);
-    eta(i) = uniterr(grid,,grid_unit,U,u);
+    eta(i) = uniterr(grid,grid_unit,U,u);
 end
 s = sum(eta);
 if s < opt.tol
