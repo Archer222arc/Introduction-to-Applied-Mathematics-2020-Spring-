@@ -11,5 +11,5 @@ if i < m && j < n
 elseif i < m
     u = (U(i,j)*(h-b.y)+U(i+1,j)*b.y)/h;
 elseif j < n
-    u = (U(i,j)*(h-b.x)+U(i,j+1)*b.x)/h
+    u = (U(i,j)*(h-b.x)+U(i,j+1)*b.x)/h;
 else ;u = U(i,j);    end

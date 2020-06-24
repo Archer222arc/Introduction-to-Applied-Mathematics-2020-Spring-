@@ -14,9 +14,9 @@ Dif = Generate_Dif_2d(grid_size,opt.h);
 A = speye(prod(grid_size))-opt.k*Generate_Dif_2d(grid_size,opt.h);
 for i = 1 : floor(opt.time/opt.k)
     U_kron = A\U_kron;
-    surf(x,y,reshape(U_kron,grid_size));
-    shading interp;
-    drawnow;
+%     surf(x,y,reshape(U_kron,grid_size));
+%     shading interp;
+%     drawnow;
 end
 output.cost = toc;
 output.U = reshape(U_kron,grid_size);
