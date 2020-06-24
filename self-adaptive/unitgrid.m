@@ -26,7 +26,8 @@ for i = 1:num
         end
         if flag == 1
             len = len+1;
-            v = vec(repair(unit));
+            v = repair(unit);
+            v = v(:);
             grid_unit{len} = v';
         else
             j = di+1; if j == 5; j = 1; end
@@ -37,7 +38,8 @@ for i = 1:num
                    if x == floor(x/(t*2*dis))*2*t*dis && y == floor(y/(t*2*dis))*2*t*dis
                       unit = repair([2*v-u;u;u+2*dir(j,:)*t*dis;u+2*dir(di,:)*t*dis]);
                       patch('Faces',[1,2,3,4],'Vertices',unit,'EdgeColor','blue','FaceColor','none','LineWidth',1);
-                      v = vec(unit);
+%                       v = reshape(unit);
+                      v = unit(:);
                       len = len+1;
                       grid_unit{len} = v';
                    end

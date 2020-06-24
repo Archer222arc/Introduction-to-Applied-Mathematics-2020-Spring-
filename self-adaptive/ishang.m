@@ -17,7 +17,7 @@ for i = 1:4
     for j = i:i+3
         k = mod(j,4); if k==0;k=4;end
         v = v+d*dir(k,:);
-        if isempty(find(ismember(grid,v,'rows'))); flag = 0; break; end
+        if isempty(find(ismember(grid,v,'rows'))) && ~isedge(v); flag = 0; break; end
     end
     if flag == 0;   break; end
 end
