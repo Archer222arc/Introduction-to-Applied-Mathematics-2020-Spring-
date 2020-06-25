@@ -15,7 +15,29 @@ k = 0;
 opt.tol = 1e-6;
 opt.theta = 0.1;
 flag = 0;
+% N = 100;
 f = @(x,y) power(x^2+y^2,1/3)*sin(2*mod(atan2(y,x),pi*2)/3)*(1-x^2)*(1-y^2);
+% F = zeros(201);
+% h = 2/N
+% for j = 1:201
+%     for i = 1:201
+%         x = 1.01-i*0.01; y = 1.01-i*0.01;
+%         if isinregion(x,y)
+%             F(i,j) = f(x,y);
+%         end
+%     end
+% end
+% x = -1:h:1;
+% y = -1:h:1;
+% z = zeros(N+1);
+% for i = 1:N+1
+%     for j = 1:N+1
+%         z(i,j) = Lap(y(j),x(i));
+%     end
+% end
+%     surf(x,y,z);
+%     shading interp;
+%     drawnow;
 while flag == 0
     k = k+1;
     [L,u] = Generate_Dif_adap(grid);
@@ -30,7 +52,7 @@ while flag == 0
     output = grid_up(grid,x,opt);    
     flag = output.flag;
     grid = output.grid;
-    if k == 20
+    if k == 60 || k == 100
         c = 1;
     end
  end

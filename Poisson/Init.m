@@ -1,5 +1,4 @@
 function U_0 = Init(h);
-
 n = 1/h-1;
 U_0 = zeros(n);
 for i = 1:n

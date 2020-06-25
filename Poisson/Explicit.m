@@ -12,9 +12,9 @@ U_kron = reshape(U_0,vec_size);
 Dif = Generate_Dif_2d(grid_size,opt.h);
 for i = 1 : floor(opt.time/opt.k)
     U_kron = U_kron+opt.k*(Dif*U_kron);
-    surf(x,y,reshape(U_kron,grid_size));
-    shading interp;
-    drawnow;
+%     surf(x,y,reshape(U_kron,grid_size));
+%     shading interp;
+%     drawnow;
 end
 output.cost = toc;
 output.U = reshape(U_kron,grid_size);

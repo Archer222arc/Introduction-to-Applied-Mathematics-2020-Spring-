@@ -18,8 +18,8 @@ for i = 1:n-1
         g = @(x,y) interpolation(x,y,opt,U);
         interval.x = [j*h,j*h+h];
         interval.y = [i*h,i*h+h];
-        err1 = err1+sqrt(myint_2d(@(x,y)(f(x,y)-g(x,y))^2,opt,interval));
-        err2 = err2+myint_2d(f,opt,interval);
+        err1 = err1+sqrt(myint_2d(@(x,y)(f(x,y)-g(x,y)).^2,opt,interval));
+%         err2 = err2+myint_2d(f,opt,interval);
     end
 end
 output.rel = err1/err2;

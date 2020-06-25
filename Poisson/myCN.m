@@ -11,8 +11,8 @@ x = (1:grid_size(2))'*opt.h;
 y = (1:grid_size(1))'*opt.h;
 U_kron = reshape(U_0,vec_size);
 Dif = Generate_Dif_2d(grid_size,opt.h);
-A = speye(prod(grid_size))-opt.k*Generate_Dif_2d(grid_size,opt.h)/2;
-B = speye(prod(grid_size))+opt.k*Generate_Dif_2d(grid_size,opt.h)/2;
+A = speye(prod(grid_size))-opt.k*Dif/2;
+B = speye(prod(grid_size))+opt.k*Dif/2;
 for i = 1 : floor(opt.time/opt.k)
     U_kron = A\(B*U_kron);
 %     surf(x,y,reshape(U_kron,grid_size));

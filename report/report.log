@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 2.9.7440 64-bit) (preloaded format=xelatex 2020.6.24)  25 JUN 2020 01:52
+This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 2.9.7440 64-bit) (preloaded format=xelatex 2020.6.24)  26 JUN 2020 01:26
 entering extended mode
 **./report.tex
 (report.tex
@@ -505,7 +505,11 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \ALG@tmplength=\skip98
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (report.aux)
+) (report.aux
+
+LaTeX Warning: Label `table:CPU time' multiply defined.
+
+)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
@@ -688,21 +692,130 @@ File: 方程三，自适应80.jpg Graphic file (type bmp)
 <方程三，自适应80.jpg>
  [5] [6]
 
-LaTeX Warning: Command \L invalid in math mode on input line 289.
+LaTeX Warning: Command \L invalid in math mode on input line 291.
 
 Missing character: There is no Ł in font cmmi12!
-[7] [8] [9] (report.aux) )
+[7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 389--421
+
+ []
+
+File: 热扩散.jpg Graphic file (type bmp)
+<热扩散.jpg>
+File: 显式不稳定.jpg Graphic file (type bmp)
+<显式不稳定.jpg>
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 436--438
+
+ []
+
+[10]
+File: 第三题图.jpg Graphic file (type bmp)
+<第三题图.jpg>
+
+Underfull \hbox (badness 10000) in paragraph at lines 459--464
+
+ []
+
+[11]
+File: L-shaped.jpg Graphic file (type bmp)
+<L-shaped.jpg>
+
+Underfull \hbox (badness 10000) in paragraph at lines 474--480
+
+ []
+
+File: L-型函数.jpg Graphic file (type bmp)
+<L-型函数.jpg>
+File: L-型Laplace.jpg Graphic file (type bmp)
+<L-型Laplace.jpg>
+
+Underfull \hbox (badness 10000) in paragraph at lines 481--494
+
+ []
+
+[12] [13]
+File: 差分矩阵.png Graphic file (type bmp)
+<差分矩阵.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 542--548
+
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 549--550
+
+ []
+
+[15]
+File: theta=8,4次.jpg Graphic file (type bmp)
+<theta=8,4次.jpg>
+File: theta=8,7次.jpg Graphic file (type bmp)
+<theta=8,7次.jpg>
+
+Underfull \hbox (badness 10000) in paragraph at lines 600--614
+
+ []
+
+File: theta=8,8次.jpg Graphic file (type bmp)
+<theta=8,8次.jpg>
+File: theta=8,10次.jpg Graphic file (type bmp)
+<theta=8,10次.jpg>
+File: theta=8,8次.jpg Graphic file (type bmp)
+<theta=8,8次.jpg>
+File: theta=8,10次.jpg Graphic file (type bmp)
+<theta=8,10次.jpg>
+[16]
+File: theta=0.6,5次.jpg Graphic file (type bmp)
+<theta=0.6,5次.jpg>
+File: theta=0.6,8次.jpg Graphic file (type bmp)
+<theta=0.6,8次.jpg>
+File: theta=0.6,12次.jpg Graphic file (type bmp)
+<theta=0.6,12次.jpg>
+File: theta=0.6,18次.jpg Graphic file (type bmp)
+<theta=0.6,18次.jpg>
+File: theta=0.3,10次.jpg Graphic file (type bmp)
+<theta=0.3,10次.jpg>
+File: theta=0.3,15次.jpg Graphic file (type bmp)
+<theta=0.3,15次.jpg>
+ [17]
+File: theta=0.3,20次.jpg Graphic file (type bmp)
+<theta=0.3,20次.jpg>
+File: theta=0.3,30次.jpg Graphic file (type bmp)
+<theta=0.3,30次.jpg>
+File: theta=0.2,10次.jpg Graphic file (type bmp)
+<theta=0.2,10次.jpg>
+File: theta=0.2,20次.jpg Graphic file (type bmp)
+<theta=0.2,20次.jpg>
+File: theta=0.2,30次.jpg Graphic file (type bmp)
+<theta=0.2,30次.jpg>
+File: theta=0.2,50次.jpg Graphic file (type bmp)
+<theta=0.2,50次.jpg>
+ [18]
+File: theta=0.1,20次.jpg Graphic file (type bmp)
+<theta=0.1,20次.jpg>
+File: theta=0.1,40次.jpg Graphic file (type bmp)
+<theta=0.1,40次.jpg>
+File: theta=0.1,60次.jpg Graphic file (type bmp)
+<theta=0.1,60次.jpg>
+File: theta=0.1,100次.jpg Graphic file (type bmp)
+<theta=0.1,100次.jpg>
+ [19] [20] (report.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 22 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 11131 strings out of 414071
- 255409 string characters out of 2902343
- 560154 words of memory out of 3000000
- 28586 multiletter control sequences out of 15000+200000
+ 11301 strings out of 414071
+ 258206 string characters out of 2902343
+ 560238 words of memory out of 3000000
+ 28728 multiletter control sequences out of 15000+200000
  539862 words of font info for 88 fonts, out of 3000000 for 9000
  1348 hyphenation exceptions out of 8191
- 57i,15n,72p,810b,1339s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 57i,15n,72p,810b,1365s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on report.pdf (9 pages).
+Output written on report.pdf (20 pages).
