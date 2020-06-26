@@ -1,2 +1,2 @@
 # Introduction-to-Applied-Mathematics-2020-Sping-
-大作业
+2020年春季应用数学导论大作业
