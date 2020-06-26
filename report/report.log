@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 2.9.7440 64-bit) (preloaded format=xelatex 2020.6.24)  26 JUN 2020 01:26
+This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 2.9.7440 64-bit) (preloaded format=xelatex 2020.6.24)  26 JUN 2020 09:23
 entering extended mode
 **./report.tex
 (report.tex
@@ -798,8 +798,8 @@ File: theta=0.1,40次.jpg Graphic file (type bmp)
 <theta=0.1,40次.jpg>
 File: theta=0.1,60次.jpg Graphic file (type bmp)
 <theta=0.1,60次.jpg>
-File: theta=0.1,100次.jpg Graphic file (type bmp)
-<theta=0.1,100次.jpg>
+File: theta=0,1,80次.jpg Graphic file (type bmp)
+<theta=0,1,80次.jpg>
  [19] [20] (report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
@@ -811,7 +811,7 @@ LaTeX Warning: There were multiply-defined labels.
 ### bottom level 
 Here is how much of TeX's memory you used:
  11301 strings out of 414071
- 258206 string characters out of 2902343
+ 258200 string characters out of 2902343
  560238 words of memory out of 3000000
  28728 multiletter control sequences out of 15000+200000
  539862 words of font info for 88 fonts, out of 3000000 for 9000
