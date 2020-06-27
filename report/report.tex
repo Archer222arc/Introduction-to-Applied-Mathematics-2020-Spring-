@@ -54,9 +54,9 @@ $$\left\{
 对于$N+1$个结点$x_0=0,x_1 = \frac{L}{N},...x_N=L,$在子区间$[x_{i-1},x_{i+1}](i=1,2,...,N-1)$上取分段线性函数:
 $$\phi_i(x)=\left\{
 \begin{aligned}
-&\frac{x-x_{i-1}}{h_i},\indent x\in[x_{i-1},x_i]\\
-&\frac{x_{i+1}-x}{h_{i+1}},\indent x\in [x_i,x_{i+1}] \\
-&0,	\indent 其他
+&\frac{x-x_{i-1}}{h_i},\indent &x\in[x_{i-1},x_i]\\
+&\frac{x_{i+1}-x}{h_{i+1}},\indent &x\in [x_i,x_{i+1}] \\
+&0,	\indent &x \notin [x_{i-1},x_{i+1}]
 \end{aligned}
 \right.$$其中$h_i=x_i-x_{i-1},$对于边界两个结点,考虑$x_0,x_1;x_{N-1},x_N$对应的两个两点线性插值函数，这样得到$N+1$个基函数$\phi_0,\phi_1,...,\phi_N,$现求解$v(x)= \sum_{j=0}^{N}u_j\phi_j(x)$,使得
 $$ -\int_{0}^{1}u''(x)v(x)dx = \int_{0}^{1}f(x)v(x)dx $$
@@ -80,7 +80,7 @@ A =
 & & & -\frac{1}{h_{N}} & \frac{1}{h_N}+\kappa_L 
 \end{pmatrix}
 $$
-得到方程$$Au = F$$。分别应用均匀剖分和自适应方法，在总点数$N=10,20,80$时得到如下结果:\\
+得到方程$$Au = F$$分别应用均匀剖分和自适应方法，在总点数$N=10,20,80$时得到如下结果:\\
 $\kappa_0=10^6,k_1=0,g_0=0,f(x)=e^{-100(x-0.5)^2}$时，\\
 \begin{figure}[H]
 	\centering
@@ -139,12 +139,12 @@ $\kappa_0=10^6,k_1=10^5,g_0=0,g_L=0,f(x)=e^{-100(x-0.5)^2}$时，\\
 	\centering
 	\begin{minipage}[t]{0.48\textwidth}
 		\centering
-		\includegraphics[width=9cm]{方程二，均匀剖分10.jpg}
+		\includegraphics[width=9cm]{方程二，均匀剖分20.jpg}
 		\caption{均匀剖分20}
 	\end{minipage}
 	\begin{minipage}[t]{0.48\textwidth}
 		\centering
-		\includegraphics[width=9cm]{方程二，自适应10.jpg}
+		\includegraphics[width=9cm]{方程二，自适应20.jpg}
 		\caption{自适应20}
 	\end{minipage}
 \end{figure}
@@ -214,7 +214,7 @@ $$
 \end{aligned}
 \right.
 $$
-它有解析解$u = e^{-2\pi^2t}\sin(\pi x)\sin(\pi y)$，我们使用不同数值方法计算方程近似解，并给出相关分析。
+它有解析解$u = e^{-2\pi^2t}\sin(\pi x)\sin(\pi y)$，下面我们使用不同数值方法计算方程近似解，并给出相关分析。
 \subsection{稳定性分析}
 考察Laplace算子$$\Delta = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2}$$
 \noindent 我们使用中心差分方法
@@ -252,43 +252,37 @@ $$
 &+\left(2\theta - 1\right)k\tilde{U}_{xxyy} + O(k^2+h_x^4+h_y^4)
 \end{aligned}
 $$
-从而
+\noindent
+这样截断误差$\mathcal{E}$满足
 $$
-\begin{aligned}
-(1-\theta)L_{h_x,h_y}U_{i,j}^m+\theta L_{h_x,h_y}U_{i,j}^{m+1} - \Delta \tilde{U} =& \left(\left(\theta - \frac{1}{2}\right)k+\frac{h_x^2}{12}\right)\tilde{U}_{xxxx}+\left(\left(\theta - \frac{1}{2}\right)k+\frac{h_y^2}{12}\right)\tilde{U}_{yyyy}\\
-&+\left(2\theta - 1\right)k\tilde{U}_{xxyy} + O(k^2+h_x^4+h_y^4)
-\end{aligned}
-$$
-这样截断误差$E$满足
-$$
-E = 
+\mathcal{E} = 
 \begin{cases}
 O(k^2+h_x^2+h_y^2) & \theta = 0.5\\
 O(k+h_x^2+h_y^2) & \theta \neq 0.5\\
-O(k+h_x^4+h_y^4) & h_x = h_y,\theta = 0.5-1/12\mu_x \\
+O(k+h_x^4+h_y^4) & h_x = h_y,\theta = 0.5-1/12\lambda_x \\
 \end{cases}
 $$
 可以看出，C-N方法具有较高的截断误差阶数，现在考虑Fourier函数
 $$U_{j,k}^m =\lambda_{\alpha}^me^{i(\alpha_xx_j+\alpha_yy_k)},\quad \alpha = (\alpha_x, \alpha_y)$$
 解得
 $$
-\lambda_k = \frac{1 - 4(1-\theta)\left(\mu_x\sin^2(\alpha_xh_x/2)+\mu_y\sin^2(\alpha_yh_y/2)\right)}{1+4\theta\left(\mu_x\sin^2(\alpha_xh_x/2)+\mu_y\sin^2(\alpha_yh_y/2)\right)}
+\lambda_k = \frac{1 - 4(1-\theta)\left(\lambda_x\sin^2(\alpha_xh_x/2)+\lambda_y\sin^2(\alpha_yh_y/2)\right)}{1+4\theta\left(\lambda_x\sin^2(\alpha_xh_x/2)+\lambda_y\sin^2(\alpha_yh_y/2)\right)}
 $$
 因此，我们有稳定性条件
 
 $$
 \left\{
 \begin{aligned}
-	2(\mu_x+\mu_y)(1-2\theta) \le 1  \indent&0 \le \theta < 1/2\\
+	2(\lambda_x+\lambda_y)(1-2\theta) \le 1  \indent&0 \le \theta < 1/2\\
 	\mbox{无条件收敛} \indent \indent  &1/2 \le \theta \le 1
 \end{aligned}
 \right.
 $$
-这表明当$h_x = h_y =h$时，对于显式格式，我们需要选取$\mu < \frac{1}{4}$,即$1/h \ge 1/4k$，才能得到收敛结果。
+这表明当$h_x = h_y =h$时，对于显式格式，我们需要选取$\lambda \le \frac{1}{4}$,即$h^2 \ge 4k$，才能得到收敛结果。
 \subsection{数值实验}
 考虑由中间$(N-1)\times(N-1)$个点，其中$N=\frac{1}{h}$为单元网格长，则对应的差分矩阵
 $$
-\L_h = 
+L_h = 
 \begin{pmatrix}
 A_h & I_{N-1}/h\\
 I_{N-1}/h^2 & A_h & I_{N-1}/h^2 \\
@@ -338,12 +332,13 @@ $$
 	\KwIn{$A \in \mathbb{R}^{n\times n}$,$b \in \mathbb{R}^n$, \textbf{TOLERENCE} $tol$, \textbf{INITIALVALUE} $x_0$ \textbf{MAXITERATION} $ite$}
 	\KwOut{$x \in \mathbb{R}^{n}$,\ $Ax \approx b$}
 	Divide $A$ into $D$,$L$ and $U$\\
-	$\mathbf{Ux} \gets Ux_0$\\
-	\While{$norm(res)/norm(res_0) > tol \indent\textbf{\&\&} ite_number\le ite  $}
+	$ res = res_0 = b-Ax$ \\
+	\While{$norm(res)/norm(res_0) > tol \indent$ \textbf{or} $ ite_{number}\le ite  $}
 		{
-			Get $x$ by solving $(D-L)x = \mathbf{Ux} + b$\\
-			Update $res = Ux - \mathbf{Ux}$\\
-			Update $\mathbf{Ux} \gets res + \mathbf{Ux}$\\
+			Update $y \gets Ux$\\
+			Get $x$ by solving $(D-L)x = y + b$\\
+			Update $res = -y$\\
+			Update $Ux \gets res + y$\\
 			\If{\text{norm}($res$) $\le tol*res_0$}{
 				\Return $x$\\
 		}
@@ -352,7 +347,7 @@ $$
 \end{algorithm}
 \noindent 这里利用到了$\text{res} = b - Ax^{m+1} = b - (D-L)x^{m+1} + Ux^{m+1} = Ux^{m+1} - Ux^m$。可以证明，当A为对称正定矩阵时，G-S迭代法是收敛的。\\
 \noindent \textbf{多重网格法}\\
-对于单元格长为$h=1/N$的细网格，我们希望找到一个较好的初始值，从而加快迭代法收敛的速度，故考虑在细网格上先进行若干次迭代，再将误差限制在粗网格上，在粗网格解关于误差的方程，再把提升回细网格，这样两者相加，可以认为得到了更近的初值，再重复这样的操作，直到误差满足要求，这里可以重复限制、提升多层，算法如下：\\
+对于单元格长为$h=1/N$的细网格，我们希望找到一个较好的初始值，从而加快迭代法收敛的速度，故考虑在细网格上先进行若干次迭代，将误差限制在粗网格上，在粗网格解关于误差的方程，再把近似解提升回细网格，这样两者相加，可以认为得到了更近的初值，再重复这样的操作，直到误差满足要求，这里可以重复迭代，算法如下：\\
 \begin{algorithm}[H]
 	\caption{多重网格法}
 	\label{alg:MG}  
@@ -366,7 +361,7 @@ $$
 		Get residue: $res \gets b - Au$\\
 		Get coarse residue: $\widehat{res} \gets I_{h}^{2h}res$\\
 		$\widehat{A} \gets I_{h}^{2h}A\:I_{2h}^h$\\
-		Solve $\widehat{A}\hat{e} = \widehat{res}$ with \textbf{EDGE} $2*h$, \textbf{INITIALVALUE} $0$ and \textbf{MAXITERATION} $ite$ by \textbf{G-S} \\
+		Solve $\widehat{A}\hat{e} = \widehat{res}$ with \textbf{EDGE} $2*h$, \textbf{INITIALVALUE} $\textbf{0}$ and \textbf{MAXITERATION} $ite$ by \textbf{G-S} \\
 		$e \gets I_{2h}^h\hat{e}$\\
 		Update $u \gets u + e$\\
 		Solve $Ax = b$ by \textbf{G-S} with \textbf{INITIALVALUE} $u$ and \textbf{MAXITERATION} ${ite}_2$\\
@@ -380,7 +375,7 @@ $$\tilde{F}:\xi=\frac{2(x-x_c)}{h_x},\eta=\frac{2(y-y_c)}{h_y},\indent (x,y)\in 
 定义如下的基函数：
 $$
 	\begin{aligned}
-& \Phi_1 = \frac{(1-\xi)(1-\eta)}{4},\Phi_2=\frac{(1-\xi)(1-\eta)}{4}\\
+& \Phi_1 = \frac{(1-\xi)(1-\eta)}{4},\Phi_2=\frac{(1-\xi)(1+\eta)}{4}\\
 & \Phi_3 = \frac{(1+\xi)(1-\eta)}{4},\Phi_4=\frac{(1+\xi)(1+\eta)}{4}\\
 \end{aligned} 
 $$
@@ -433,30 +428,30 @@ $$||u(x,y,1)-u_{h}(x,y,1)||_0= (\int_{\Omega}(u(x,y,1)-u_h(x,y,1))^2dxdy)^{1/2}$
 	\end{minipage}
 \end{figure}
 
-\noindent 可以看到，与理论分析相同，当网格比$\mu > \frac{1}{4}$时，显式格式是不稳定的，而C-N方法在网格比较大时就有很好的稳定性，但随着网格比的减小和步长的减小，由于解方程的舍入误差，三者的表现最终接近，但步长很小时存在误差反而增大的情况，推测可能是由于方程的解析解较小，由于迭代造成的舍入损失更明显。\\
-\indent 考虑取$h = 1/32,1/128,1/512,k = 1/512$，分别应用Chelesky分解，G-S迭代法和V-cycle多重网格法求解$t=1$的解，对于迭代法，每次以上一个时间层为初始值，所得时间分别如下：\\
+\noindent 可以看到，与理论分析相同，当网格比$\mu > \frac{1}{4}$时，显式格式是不稳定的，而C-N方法在网格比较大时就有很好的稳定性，但随着网格比和步长的减小，三者的表现最终接近，但步长很小时存在误差反而增大的情况，推测可能是由于方程的解析解较小，由于迭代造成的舍入损失更明显。\\
+\indent 现在取$h = 1/32,1/128,1/512,k = 1/512$，分别应用Chelesky分解，G-S迭代法和V-cycle多重网格法求解$t=1$的解，对于迭代法，每次以上一个时间层的解为初始值，所得时间分别如下：\\
 
 \begin{table}[H]
 	\centerline{
 		\begin{tabular}{|c|c|c|c|c|}
 			\hline
-			\multirow{2}*{时间步长 $k$}& \multirow{2}*{空间步长 $h$} & \multicolumn{3}{c|}{总时间(s))}\\
+			\multirow{2}*{时间步长 $k$}& \multirow{2}*{空间步长 $h$} & \multicolumn{3}{c|}{总时间(s)}\\
 			\cline{3-5}
 			& & 多重网格 V& Cholesky & Gauss-Seidel\\
 			\hline
-			\multirow{3}*{1/512} &   1/32  & 1.3298e+1 & 7.2836  & 7.068  \\
+			\multirow{3}*{1/512} &   1/32  & 1.3298e+1 & 7.2836  & 7.0681  \\
 			\cline{2-5}
-			&   1/128  & 3.6337e+2 & 2.791 &  159.715 \\
+			&   1/128  & 3.6337e+2 & 1.0274e+2 &  2.3415e+3 \\
 			\cline{2-5}
-			&   1/512  &  & 6.3446e+3 &  7.555e+3  \\
+			&   1/512  &  6.3446e+3 & 7.5289e+3&  $\backslash$  \\
 			\hline
 	\end{tabular}}
 	\caption{时间步长k=1/512时，三种方法求方程在$t=1$解的总时间}
-	\label{table:CPU time}
+	\label{table:time}
 \end{table}
-\noindent 可以看出多重网格的时间大致为$O(N^2)$,Cholesky的时间为$O(N^6)$,而G-S迭代法所需的时间要多得多。\\
+\noindent 可以看出多重网格的时间大致为$O(N^2)$。\\
 \indent
-对每个固定的$h$,分别用三种格式求近似解，对每一种格式，令$k$从大到小依次取2的幂，比较它们的误差，取出其中最小的，并且计算误差$$||u(x,y,1)-u_{h}(x,y,1)||_0$$所得结果如下:\\
+对每个固定的$h$,分别用三种格式求近似解，对每一种格式，令$k$从大到小依次取2的幂，比较取不同$k$时求解的误差，取出其中最小的，并且计算误差$$||u(x,y,1)-u_{h}(x,y,1)||_0$$所得结果如下:\\
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=12cm]{第三题图.jpg}
@@ -467,12 +462,13 @@ $$||u(x,y,1)-u_{h}(x,y,1)||_0= (\int_{\Omega}(u(x,y,1)-u_h(x,y,1))^2dxdy)^{1/2}$
 \subsection{问题}
 考虑如下泊松问题:
 $$
-\begin{aligned}
+\left\{\begin{aligned}
 -\Delta&=f\indent (x,y)\in \Omega,\\
 u|_{\partial\Omega}&=0
 \end{aligned}
+\right.
 $$
-\noindent 其中区域$\Omega$为如下L型区域，$u(x,y)=r^{\frac{2}{3}}sin(\frac{2}{3}\theta)(1-x^2)(1-y^2)$。\\
+\noindent 其中$\Omega$为如下L型区域，$u(x,y)=r^{\frac{2}{3}}sin(\frac{2}{3}\theta)(1-x^2)(1-y^2)$。\\
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=12cm]{L-shaped.jpg}
@@ -495,7 +491,7 @@ $$
 \noindent 可以看到，在$(0,0)$的邻域内$\Delta\to +\infty$。下面我们分别使用均匀剖分和自适应剖分，利用差分方法求方程的近似解。
 \subsection{数值实验}
 \noindent \textbf{LDL分解}\\
-考察方程$Ax=b$，对于对称非正定矩阵$A$,Cholesky分解不再有效，此时可以考虑同样利用了对称性的LDL分解，得到$A=LDL'$，依次求解$Lz=b,Dy=z,L'x=y$得到方程的解，这三个方程分别为下三角、对角、上三角的，可以在$O(n^2)$时间内求解，故LDL分解所需要的运算次数约为$O(n^3/3)$的,下面给出算法：\\
+考察方程$Ax=b$，对于对称非正定矩阵$A$,Cholesky分解不再可行，此时可以考虑同样利用了对称性的LDL分解，得到$A=LDL^{\rm T}$，依次求解$Lz=b,Dy=z,L^{\rm T} x=y$得到方程的解，这三个方程分别为下三角、对角、上三角的，可以在$O(n^2)$时间内求解，故LDL分解所需要的运算时间约为$O(n^3/3)$的,下面给出算法：\\
 \begin{algorithm}[H]
 	\caption{利用向量外积的LDL分解}  
 	\label{alg:gaxpy ldl}
@@ -515,28 +511,29 @@ $$
 	\label{alg:chunk LDL}
 	\KwIn{$A \in \mathbb{R}^{n\times n}$, \textbf{MINISIZE},\textbf{NUM}}  
 	\KwOut{$L,D \in \mathbb{R}^{n\times n}$,\ $LDL^{\rm T} = A$}
-	\If{$n \le  \textbf{MINISIZE}$}
+	\If{$n \le $ \textbf{MINISIZE}}
 	{
-			Solve $A=LDL^{\rm T}$ with  \textbf{LDL分解}\\
+			Solve $A=LDL^{\rm T}$ with  \textbf{LDL}\\
 	}  
-	SUBSIDE = \textbf{CELL}(n/\textbf{NUM})
-	\For{$j = 1 : SUBSIDE :n$}  
+	subsize = $\textbf{ceil}(n/\textbf{NUM}$)\\
+	\For{$j = 1 : subsize :n$}  
 	{ 
-		\If{$ j+$SUBSIDE$> n$}
+		\If{$ j+$subsize $> n$}
 		{
-			Solve$ A(j:n,j:n) = LDL^{\rm T} $ with \textbf{LDL分解},update$ tril(A(j:n,j:n))\gets L,D$\\
+			Solve $ A(j:n,j:n) = LDL^{\rm T} $ with \textbf{LDL}, update $ tril(A(j:n,j:n))$ with $ L,D$\\
 		}
 		\Else
 		{
-			Solve$ A(j:j+$SUBSIZE$-1,j:j+$SUBSIZE$-1)U'= A(j:j+$SUBSIZE$-1,j+SUBSIZE:n) $\\
-			Update$A(j+$SUBSIZE$:n,j:j+$SUBSIZE$-1)\gets U $\\
-			Update$A(j+$SUBSIZE$:n,j+$SUBSIZE$:n)\gets A(j+$SUBSIZE$:n,j+$SUBSIZE$:n)-A(j+$SUBSIZE$:n,j:j+$SUBSIZE$-1)*A(j:j+$SUBSIZE$-1,j+$SUBSIZE$:n)^{\rm T} $\\
-			Solve$A(j:j+$SUBSIZE$-1,j:j+$SUBSIZE$-1) = LDL^{\rm T}$ with \textbf{分块LDL分解}\\
-			Update$tril(A(j:j+$SUBSIZE$-1,j:j+$SUBSIZE$-1)) \gets L_1,D_1$\\
-			Update$A(j+$SUBSIZE$:n,j+$SUBSIZE$:n)\gets L_1A(j+$SUBSIZE$:n,j+$SUBSIZE$:n)$\\
-		}
-		$L = tril(A,-1),D=diag(A)$\\
-	}  
+			Solve $A(j:j+$subsize$-1,j:j+$subsize$-1) = LDL^{\rm T}$ with \textbf{algorithm \ref{alg:chunk LDL}}\\
+			Update $tril(A(j:j+$subsize$-1,j:j+$subsize$-1)) $ with $ L,D$\\
+			Solve $ LV= A(j:j+$subsize$-1,j+subsize:n) $\\
+			Solve $ DU^{\rm T} = V $\\
+			Update $A(j+$subsize$:n,j:j+$subsize$-1)\gets U $\\
+			Update $A(j+$subsize$:n,j+$subsize$:n)\gets A(j+$subsize$:n,j+$subsize$:n)-UV$\\						
+%			Update $A(j+$subsize$:n,j+$subsize$:n)\gets LA(j+$subsize$:n,j+$subsize$:n)$\\
+		}	
+	} 
+ 	$L = tril(A,-1),D=diag(A)$\\
 	\Return $L,D$\;
 \end{algorithm}
 \noindent \textbf{数值结果}\\
@@ -546,25 +543,25 @@ $$
 	\includegraphics[width=12cm]{差分矩阵.png}
 	\caption{L型差分系数矩阵}
 \end{figure}
-\noindent 其中编号的顺序是从右上角$(1-h,1-h)$开始，从上到下，从右往左编号。迭代法的初始值为全零网格，近似解$\tilde{U}_h$满足误差关系$$||A_h\tilde{U}_h-F_h||_2/||F_h||_2 \le 10^{-8} $$所花的时间如下:\\
+\noindent 编号的顺序是从右上角$(1-h,1-h)$开始，从上到下，从右往左编号。迭代法的初始值为全零网格，近似解$\tilde{U}_h$满足误差关系$$||A_h\tilde{U}_h-F_h||_2/||F_h||_2 \le 10^{-8} $$所花的时间如下:\\
 
 \begin{table}[H]
 	\centerline{
 		\begin{tabular}{|c|c|c|c|c|}
 			\hline
-			\multirow{2}*{$N = 2/h$} &  \multicolumn{4}{c|}{总时间(s))}\\
+			\multirow{2}*{$N = 2/h$} &  \multicolumn{4}{c|}{总时间(s)}\\
 			\cline{2-5}
 		  	&LDL分解 & G-S迭代 V& 超松弛迭代 & 多重网格\\
 			\hline
-			32	&    9.1e-3  & 1.33e-2 & 8e-3  & 3.4e-3  \\
+			32	&   5.1174e-2   & 1.3309e-2 & 8.5721e-3  & 3.4924e-3  \\
 			\cline{1-5}
-			64 & 5.11e-2 &   2.97e-1  & 7.67e-2 & 1.52e-2   \\
+			64 & 2.9712e-1 &  2.9704   & 7.6794e-2 & 1.5284e-2   \\
 			\cline{1-5}
-			128&   2.998e-1  & 6.1109 & 2.2015 & 6.62e-2   \\
+			128&   1.3829  & 6.1109 & 2.2015 & 6.6295e-2   \\
 			\cline{1-5}
-			256& 2.5330 & 1.003e+2 & 3.6239e+1 &2.69e-1  \\
+			256& 1.7325e+1 & 1.0036e+2 & 3.6239e+1 &2.6981e-1  \\
 			\cline{1-5}
-			512 &1.9108e+1 & 2.1589e+3 & 7.5086e+2 & 1.0992 \\
+			512 &1.9108e+2 & 2.1589e+3 & 7.5086e+2 & 1.0992 \\
  			\hline
 	\end{tabular}}
 	\caption{时间步长k=1/512时，三种方法求方程在$t=1$解的总时间}
@@ -579,7 +576,7 @@ $$
 	\KwOut{$U,N$}  
 	Update $\eta(\varGamma_{k-1})\gets \eta(\varGamma_{k}) $\\
 	\While{\textbf{TRUE}}{
-	\If{$\varGamma_{k}\le \epsilon$}
+	\If{$\eta(\varGamma_{k})\le \epsilon$}
 	{
 		$N = k,U = U_k$ \textbf{Return} \\
 	}
@@ -598,7 +595,33 @@ $$
 $$
 \frac{\partial u_h}{\partial  n_e}|_{K^+}-\frac{\partial u_h}{\partial  n_e}|_{K^-}
 $$
-$\eta(G)$表示单元集合$G$中所有单元的后验误差之和。每次剖分把所选集合中的单元加细，并将边界上有两个悬点的单元也加细，使得任意一个单元的边界上只有至多一个悬点。需要注意的是，在计算中悬点取边两端点函数值的均值。分别以$\theta=0.8,0.6,0.3,0.2,0.1,\epsilon=10^{-6}$,一般来说，$\theta$越大，每次加密得网格越多，单步时间越长，收敛的步数越少。得出网格剖分图如下：\\
+$\eta(G)$表示单元集合$G$中所有单元的后验误差之和。每次剖分把所选集合中的单元加细，并将边界上有两个悬点的单元也加细，使得任意一个单元的边界上只有至多一个悬点。需要注意的是，在计算中悬点取边两端点函数值的均值。分别以$\theta=0.8,0.6,0.3,0.2,0.1,\epsilon=10^{-6}$,一般来说，$\theta$越大，每次加密得网格越多，单步时间越长，收敛到精确解所需的步数越少。得出网格剖分图如下：\\
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=9cm]{theta=1,1次.jpg}
+		\caption{$\theta=1$,1次剖分}
+	\end{minipage}
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=9cm]{theta=1,2次.jpg}
+		\caption{$\theta=1$,2次剖分}
+	\end{minipage}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=9cm]{theta=1,3次.jpg}
+		\caption{$\theta=1$,3次剖分}
+	\end{minipage}
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
+		\includegraphics[width=9cm]{theta=1,4次.jpg}
+		\caption{$\theta=1$,4次剖分}
+	\end{minipage}
+\end{figure}
 \begin{figure}[H]
 	\centering
 	\begin{minipage}[t]{0.48\textwidth}
@@ -625,19 +648,6 @@ $\eta(G)$表示单元集合$G$中所有单元的后验误差之和。每次剖�
 		\caption{$\theta=0.8$,10次剖分}
 		\end{minipage}
 	\end{figure}
-\begin{figure}[H]
-	\centering
-	\begin{minipage}[t]{0.48\textwidth}
-		\centering
-		\includegraphics[width=9cm]{theta=8,8次.jpg}
-		\caption{$\theta=0.8$,8次剖分}
-	\end{minipage}
-	\begin{minipage}[t]{0.48\textwidth}
-		\centering
-		\includegraphics[width=9cm]{theta=8,10次.jpg}
-		\caption{$\theta=0.8$,10次剖分}
-	\end{minipage}
-\end{figure}
 \begin{figure}[H]
 	\centering
 	\begin{minipage}[t]{0.48\textwidth}
@@ -738,8 +748,8 @@ $\eta(G)$表示单元集合$G$中所有单元的后验误差之和。每次剖�
 	\end{minipage}
 	\begin{minipage}[t]{0.48\textwidth}
 		\centering
-		\includegraphics[width=9cm]{theta=0.1,100次.jpg}
-		\caption{$\theta=0.1$,100次剖分}
+		\includegraphics[width=9cm]{theta=0,1,80次.jpg}
+		\caption{$\theta=0.1$,80次剖分}
 	\end{minipage}
 \end{figure}
 \noindent \textbf{误差比较}\\

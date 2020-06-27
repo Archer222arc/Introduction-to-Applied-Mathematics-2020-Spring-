@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 2.9.7440 64-bit) (preloaded format=xelatex 2020.6.24)  26 JUN 2020 01:26
+This is XeTeX, Version 3.14159265-2.6-0.999992 (MiKTeX 2.9.7440 64-bit) (preloaded format=xelatex 2020.6.24)  26 JUN 2020 13:34
 entering extended mode
 **./report.tex
 (report.tex
@@ -505,11 +505,7 @@ Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
 \ALG@tmplength=\skip98
 )
 Document Style - pseudocode environments for use with the `algorithmicx' style
-) (report.aux
-
-LaTeX Warning: Label `table:CPU time' multiply defined.
-
-)
+) (report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
@@ -630,9 +626,6 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 33.
  (E:\tex\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Missing character: There is no 其 in font [lmroman12-regular]:mapping=tex-text;!
-Missing character: There is no 他 in font [lmroman12-regular]:mapping=tex-text;!
-
 [1
 
 ]
@@ -663,10 +656,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 124--137
 
  []
 
-File: 方程二，均匀剖分10.jpg Graphic file (type bmp)
-<方程二，均匀剖分10.jpg>
-File: 方程二，自适应10.jpg Graphic file (type bmp)
-<方程二，自适应10.jpg>
+File: 方程二，均匀剖分20.jpg Graphic file (type bmp)
+<方程二，均匀剖分20.jpg>
+File: 方程二，自适应20.jpg Graphic file (type bmp)
+<方程二，自适应20.jpg>
 File: 方程二，均匀剖分80.jpg Graphic file (type bmp)
 <方程二，均匀剖分80.jpg>
 File: 方程二，自适应80.jpg Graphic file (type bmp)
@@ -690,13 +683,8 @@ File: 方程三，均匀剖分80.jpg Graphic file (type bmp)
 <方程三，均匀剖分80.jpg>
 File: 方程三，自适应80.jpg Graphic file (type bmp)
 <方程三，自适应80.jpg>
- [5] [6]
-
-LaTeX Warning: Command \L invalid in math mode on input line 291.
-
-Missing character: There is no Ł in font cmmi12!
-[7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 389--421
+ [5] [6] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 384--416
 
  []
 
@@ -705,7 +693,7 @@ File: 热扩散.jpg Graphic file (type bmp)
 File: 显式不稳定.jpg Graphic file (type bmp)
 <显式不稳定.jpg>
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 436--438
+Underfull \hbox (badness 10000) in paragraph at lines 431--433
 
  []
 
@@ -713,7 +701,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 436--438
 File: 第三题图.jpg Graphic file (type bmp)
 <第三题图.jpg>
 
-Underfull \hbox (badness 10000) in paragraph at lines 459--464
+Underfull \hbox (badness 10000) in paragraph at lines 454--459
 
  []
 
@@ -721,7 +709,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 459--464
 File: L-shaped.jpg Graphic file (type bmp)
 <L-shaped.jpg>
 
-Underfull \hbox (badness 10000) in paragraph at lines 474--480
+Underfull \hbox (badness 10000) in paragraph at lines 470--476
 
  []
 
@@ -730,7 +718,7 @@ File: L-型函数.jpg Graphic file (type bmp)
 File: L-型Laplace.jpg Graphic file (type bmp)
 <L-型Laplace.jpg>
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--494
+Underfull \hbox (badness 10000) in paragraph at lines 477--490
 
  []
 
@@ -738,34 +726,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 481--494
 File: 差分矩阵.png Graphic file (type bmp)
 <差分矩阵.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 542--548
+Underfull \hbox (badness 10000) in paragraph at lines 539--545
 
  []
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 549--550
+Underfull \hbox (badness 10000) in paragraph at lines 546--547
 
  []
 
 [15]
+File: theta=1,1次.jpg Graphic file (type bmp)
+<theta=1,1次.jpg>
+File: theta=1,2次.jpg Graphic file (type bmp)
+<theta=1,2次.jpg>
+
+Underfull \hbox (badness 10000) in paragraph at lines 597--611
+
+ []
+
+File: theta=1,3次.jpg Graphic file (type bmp)
+<theta=1,3次.jpg>
+File: theta=1,4次.jpg Graphic file (type bmp)
+<theta=1,4次.jpg>
 File: theta=8,4次.jpg Graphic file (type bmp)
 <theta=8,4次.jpg>
 File: theta=8,7次.jpg Graphic file (type bmp)
 <theta=8,7次.jpg>
-
-Underfull \hbox (badness 10000) in paragraph at lines 600--614
-
- []
-
-File: theta=8,8次.jpg Graphic file (type bmp)
-<theta=8,8次.jpg>
-File: theta=8,10次.jpg Graphic file (type bmp)
-<theta=8,10次.jpg>
-File: theta=8,8次.jpg Graphic file (type bmp)
-<theta=8,8次.jpg>
-File: theta=8,10次.jpg Graphic file (type bmp)
-<theta=8,10次.jpg>
 [16]
+File: theta=8,8次.jpg Graphic file (type bmp)
+<theta=8,8次.jpg>
+File: theta=8,10次.jpg Graphic file (type bmp)
+<theta=8,10次.jpg>
 File: theta=0.6,5次.jpg Graphic file (type bmp)
 <theta=0.6,5次.jpg>
 File: theta=0.6,8次.jpg Graphic file (type bmp)
@@ -774,11 +766,11 @@ File: theta=0.6,12次.jpg Graphic file (type bmp)
 <theta=0.6,12次.jpg>
 File: theta=0.6,18次.jpg Graphic file (type bmp)
 <theta=0.6,18次.jpg>
+ [17]
 File: theta=0.3,10次.jpg Graphic file (type bmp)
 <theta=0.3,10次.jpg>
 File: theta=0.3,15次.jpg Graphic file (type bmp)
 <theta=0.3,15次.jpg>
- [17]
 File: theta=0.3,20次.jpg Graphic file (type bmp)
 <theta=0.3,20次.jpg>
 File: theta=0.3,30次.jpg Graphic file (type bmp)
@@ -787,35 +779,31 @@ File: theta=0.2,10次.jpg Graphic file (type bmp)
 <theta=0.2,10次.jpg>
 File: theta=0.2,20次.jpg Graphic file (type bmp)
 <theta=0.2,20次.jpg>
+ [18]
 File: theta=0.2,30次.jpg Graphic file (type bmp)
 <theta=0.2,30次.jpg>
 File: theta=0.2,50次.jpg Graphic file (type bmp)
 <theta=0.2,50次.jpg>
- [18]
 File: theta=0.1,20次.jpg Graphic file (type bmp)
 <theta=0.1,20次.jpg>
 File: theta=0.1,40次.jpg Graphic file (type bmp)
 <theta=0.1,40次.jpg>
 File: theta=0.1,60次.jpg Graphic file (type bmp)
 <theta=0.1,60次.jpg>
-File: theta=0.1,100次.jpg Graphic file (type bmp)
-<theta=0.1,100次.jpg>
- [19] [20] (report.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- )
+File: theta=0,1,80次.jpg Graphic file (type bmp)
+<theta=0,1,80次.jpg>
+ [19] [20] (report.aux) )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 22 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 11301 strings out of 414071
- 258206 string characters out of 2902343
- 560238 words of memory out of 3000000
- 28728 multiletter control sequences out of 15000+200000
- 539862 words of font info for 88 fonts, out of 3000000 for 9000
+ 11324 strings out of 414071
+ 258386 string characters out of 2902343
+ 560208 words of memory out of 3000000
+ 28753 multiletter control sequences out of 15000+200000
+ 539814 words of font info for 82 fonts, out of 3000000 for 9000
  1348 hyphenation exceptions out of 8191
- 57i,15n,72p,810b,1365s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 57i,15n,72p,810b,1363s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on report.pdf (20 pages).

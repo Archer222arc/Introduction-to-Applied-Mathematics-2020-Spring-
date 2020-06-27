@@ -13,7 +13,7 @@ end
 grid = grid(m,:);
 k = 0;
 opt.tol = 1e-6;
-opt.theta = 0.1;
+opt.theta = 0.3;
 flag = 0;
 % N = 100;
 f = @(x,y) power(x^2+y^2,1/3)*sin(2*mod(atan2(y,x),pi*2)/3)*(1-x^2)*(1-y^2);
@@ -44,15 +44,10 @@ while flag == 0
     u = u';
     x = -L\u;
     z = zeros(max(size(x)),1);
-    for i = 1:max(size(x))
-        z(i) = f(grid(i,1),grid(i,2));
-    end
-    err = z-x;
-    e = norm(err);
     output = grid_up(grid,x,opt);    
     flag = output.flag;
     grid = output.grid;
-    if k == 60 || k == 100
+    if k == 10 || k == 15
         c = 1;
     end
  end
