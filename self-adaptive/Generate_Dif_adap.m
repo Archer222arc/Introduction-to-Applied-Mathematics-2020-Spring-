@@ -63,8 +63,9 @@ for i = 1 : num
                     L(i,t) = -1/h^2;
                 end
             end
-            L(i,i) = 4/h^2;           
+                      
         end
+        L(i,i) = 4/h^2;
         f(i) = g(x,y);
     end
 end
