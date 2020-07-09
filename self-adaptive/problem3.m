@@ -13,7 +13,7 @@ end
 grid = grid(m,:);
 k = 0;
 opt.tol = 1e-6;
-opt.theta = 0.3;
+opt.theta = 0.8;
 flag = 0;
 % N = 100;
 f = @(x,y) power(x^2+y^2,1/3)*sin(2*mod(atan2(y,x),pi*2)/3)*(1-x^2)*(1-y^2);
@@ -43,7 +43,9 @@ while flag == 0
     [L,u] = Generate_Dif_adap(grid);
     u = u';
     x = -L\u;
-    z = zeros(max(size(x)),1);
+    opt.err = 1;
+    err(k) = int_adap(grid,x,opt);
+    num(k) = length(grid);
     output = grid_up(grid,x,opt);    
     flag = output.flag;
     grid = output.grid;

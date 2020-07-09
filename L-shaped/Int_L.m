@@ -2,7 +2,7 @@ function s = Int_L(N,u,opt)
 %L型区域积分  
 h = 2/N;
 s = 0;
-opt.tol = 1e-6;
+if ~isfield(opt,'tol'); opt.tol = 1e-6; end
 if opt.err == 1
     f = @(x,y) power(x^2+y^2,1/3)*sin(2/3*mod(atan2(y,x),2*pi))*(1-x^2)*(1-y^2);
     g = @(x,y) (f(x,y)-interpolation_L(x,y,N,u))^2;    
@@ -28,7 +28,7 @@ if opt.err == 1
 %     end
 else
     interval.x = [-h,1-h];
-    interval.y = [h,1-h];
+    interval.y = [2*h,1-h];
     r = @(x,y)sqrt(x^2+y^2); 
     theta =@(x,y) mod(atan2(y,x),2*pi);
     rn = @(x,y)[cos(theta(x,y)),sin(theta(x,y))]; rt =@(x,y) [-sin(theta(x,y)),cos(theta(x,y))];
@@ -36,7 +36,7 @@ else
     g = @(x,y) norm((f(x,y)+interpolation_grad(x,y,N,u)))^2;
     s = s+myint_2d(g,opt,interval);
     interval.x = [-1+h,-h];
-    interval.y = [-1+h,1-h];
+    interval.y = [-1+2*h,1-h];
     s = s+myint_2d(g,opt,interval);
 %     for j = 1:N/2
 %         for i = 1:N/2-2

@@ -259,7 +259,7 @@ $$
 \begin{cases}
 O(k^2+h_x^2+h_y^2) & \theta = 0.5\\
 O(k+h_x^2+h_y^2) & \theta \neq 0.5\\
-O(k+h_x^4+h_y^4) & h_x = h_y,\theta = 0.5-1/12\lambda_x \\
+O(k+h_x^4+h_y^4) & h_x = h_y,\theta = 0.5-1/12\lambda \\
 \end{cases}
 $$
 可以看出，C-N方法具有较高的截断误差阶数，现在考虑Fourier函数
@@ -329,7 +329,7 @@ $$
 \begin{algorithm}[H]
 	\caption{G-S迭代法}  
 	\label{alg:GS}
-	\KwIn{$A \in \mathbb{R}^{n\times n}$,$b \in \mathbb{R}^n$, \textbf{TOLERENCE} $tol$, \textbf{INITIALVALUE} $x_0$ \textbf{MAXITERATION} $ite$}
+	\KwIn{$A \in \mathbb{R}^{n\times n}$,$b \in \mathbb{R}^n$, \textbf{TOLERANCE} $tol$, \textbf{INITIALVALUE} $x_0$ \textbf{MAXITERATION} $ite$}
 	\KwOut{$x \in \mathbb{R}^{n}$,\ $Ax \approx b$}
 	Divide $A$ into $D$,$L$ and $U$\\
 	$ res = res_0 = b-Ax$ \\
@@ -339,7 +339,7 @@ $$
 			Get $x$ by solving $(D-L)x = y + b$\\
 			Update $res = -y$\\
 			Update $Ux \gets res + y$\\
-			\If{\text{norm}($res$) $\le tol*res_0$}{
+			\If{\text{norm}($res$) $\le tol*norm(res_0)$}{
 				\Return $x$\\
 		}
 	}
@@ -393,21 +393,21 @@ $$||u(x,y,1)-u_{h}(x,y,1)||_0= (\int_{\Omega}(u(x,y,1)-u_h(x,y,1))^2dxdy)^{1/2}$
 			\hline
 			\multirow{5}*{1/64} & 1/256  & 16 & $+\infty$ & 2.6179 & 4.5217e-2  \\
 			\cline{2-6}
-			& 1/512  & 8 & $+\infty$ & 0.9135 & 7.5452e-3 \\
+			& 1/512  & 8 & $+\infty$ & 0.9134 & 7.5452e-3 \\
 			\cline{2-6}
-			& 1/2048  & 2 & $+\infty$ & 0.2629& 5.3124e-3  \\
+			& 1/2048  & 2 & $+\infty$ & 0.2626& 5.3124e-3  \\
 			\cline{2-6}
-			& 1/4096  & 1 & $+\infty$ & 7.6829e-2 & 5.2517e-3 \\
+			& 1/4096  & 1 & $+\infty$ & 7.6823e-2 & 5.2517e-3 \\
 			\cline{2-6}
 			& 1/16384 & 1/4 & 3.1562e-2 & 3.2415e-2 & 5.4135e-3 \\
 			\hline
-			\multirow{4}*{1/128} & 1/1024  & 16 & $+\infty$ & 5.3681 & 5.3267e-3  \\
+			\multirow{4}*{1/128} & 1/1024  & 16 & $+\infty$ & 5.3681 & 5.3268e-3  \\
 			\cline{2-6}
-			& 1/4096 & 4 & $+\infty$ & 0.4581 & 3.6782e-3 \\
+			& 1/4096 & 4 & $+\infty$ & 0.4588 & 3.6782e-3 \\
 			\cline{2-6}
-			& 1/16384  & 1 & $+\infty$ &7.6582e-2 & 2.5791e-3  \\
+			& 1/16384  & 1 & $+\infty$ &7.6582e-2 & 2.5796e-3  \\
 			\cline{2-6}
-			& 1/65536  & 1/4 & 8.3725e-3 & 8.2373e-3 & 4.7592e-3  \\
+			& 1/65536  & 1/4 & 8.3725e-3 & 8.2373e-3 & 4.7599e-3  \\
 			\cline{2-6}
 			\hline 
 	\end{tabular}}
@@ -428,8 +428,8 @@ $$||u(x,y,1)-u_{h}(x,y,1)||_0= (\int_{\Omega}(u(x,y,1)-u_h(x,y,1))^2dxdy)^{1/2}$
 	\end{minipage}
 \end{figure}
 
-\noindent 可以看到，与理论分析相同，当网格比$\mu > \frac{1}{4}$时，显式格式是不稳定的，而C-N方法在网格比较大时就有很好的稳定性，但随着网格比和步长的减小，三者的表现最终接近，但步长很小时存在误差反而增大的情况，推测可能是由于方程的解析解较小，由于迭代造成的舍入损失更明显。\\
-\indent 现在取$h = 1/32,1/128,1/512,k = 1/512$，分别应用Chelesky分解，G-S迭代法和V-cycle多重网格法求解$t=1$的解，对于迭代法，每次以上一个时间层的解为初始值，所得时间分别如下：\\
+\noindent 可以看到，与理论分析相同，当网格比$\mu > \frac{1}{4}$时，显式格式是不稳定的，而C-N方法在网格比较大时就有很好的稳定性，但随着网格比和步长的减小，三者的表现最终接近。\\
+\indent 现在取$h = 1/32,1/128,1/512,k = 1/512$，分别应用Cholesky分解，G-S迭代法和V-cycle多重网格法求解$t=1$的解，对于迭代法，每次以上一个时间层的解为初始值，所得时间分别如下：\\
 
 \begin{table}[H]
 	\centerline{
@@ -511,7 +511,7 @@ $$
 	\label{alg:chunk LDL}
 	\KwIn{$A \in \mathbb{R}^{n\times n}$, \textbf{MINISIZE},\textbf{NUM}}  
 	\KwOut{$L,D \in \mathbb{R}^{n\times n}$,\ $LDL^{\rm T} = A$}
-	\If{$n \le $ \textbf{MINISIZE}}
+	\If{$n \le $ $\textbf{MINISIZE}$}
 	{
 			Solve $A=LDL^{\rm T}$ with  \textbf{LDL}\\
 	}  
@@ -757,16 +757,52 @@ $\eta(G)$表示单元集合$G$中所有单元的后验误差之和。每次剖�
 $$e_{h,0} = (\int_{\Omega}(u(x,y)-u_h(x,y))^2dxdy)^\frac{1}{2}$$
 和
 $$e_{h,1} = (\int_{\Omega}|\nabla u(x,y)-\nabla u_h(x,y)|^2dxdy)^\frac{1}{2}$$
-对于均匀剖分，计算$h=2/N$取不同值时的$\ln e_{h,0}/\ln{h}$和$\ln e_{h,1}/\ln{h}$，对于自适应方法，计算$\ln e_{h,0}/\ln{h_l}$和$\ln e_{h,1}/\ln{h_l}$,其中$h_l=1/|\varGamma_{l}|^\frac{1}{2}$,$|\varGamma_{l}|$是网格$\varGamma_{l}$中的正方形个数。
+对于均匀剖分，计算$h=2/N$取不同值时的$\ln e_{h,0}/\ln{h}$，对于自适应方法，计算$\ln e_{h,0}/\ln{h_l}$,其中$h_l=1/|\varGamma_{l}|^\frac{1}{2}$,$|\varGamma_{l}|$是网格$\varGamma_{l}$中的正方形个数。结果如下：\\
 
 \begin{table}[H]
 	\centerline{
 		\begin{tabular}{|c|c|c|c|}
 			\hline
-			\multirow{2}*{空间步长$h=2/N$} & $e_{h,0}$&$e_{h,1} & $\ln e_{h,0}/\ln{h} $ln e_{h,1}/\ln{h}\\
+			空间步长$h=2/N$ & $e_{h,0}$ & $e_{h,1}$ & $\ln e_{h,0}/\ln{h}$  \\	
+			\cline{1-4}	
+			1/16 & 3.6513e-3 &3.4570 &2.0243\\
+			\cline{1-4}
+			1/32 &1.3800e-3&1.7254& 1.9002\\
+			\cline{1-4}
+			1/64 & 5.4831e-4&8.5952e-1&1.8054\\
+			\cline{1-4}
+			1/128 &2.2694e-4&4.2760e-1& 1.7293\\
+			\cline{1-4}
+			1/256 &9.7381e-5& 2.2001e-1 &1.6657\\	
 			\hline
 	\end{tabular}}
-	\caption{}
+	\caption{均匀剖分不同步长时的误差}
 	\label{table:L}
 \end{table}
+一阶误差与步长的对数关系大致上是线性关系，而梯度误差与$N$出现了线性关系，推测出现这种现象的原因是原函数的梯度在原点处趋近于无穷，导致在原点附近用线性插值函数逼近梯度的误差反而增大，也可能是积分方法的选取造成的。\\
+\begin{table}[H]
+	\centerline{
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			单元格数$|\varGamma_{l}|$ & $e_{h,0}$ & $e_{h,1}$ & $\ln e_{h,0}/\ln{h}$  \\	
+			\cline{1-4}	
+			5 & 0.1237 & 9.3110e+1 &2.5960\\
+			\cline{1-4}
+			16 &0.1086&4.6557e+1& 1.6014\\
+			\cline{1-4}
+			27 & 0.1077&2.3284e+1&1.3515\\
+			\cline{1-4}
+			49 &5.4296e-2&1.1644e+1&1.4971\\
+			\cline{1-4}
+			131 &3.7989e-2&5.8239 &1.3416\\	
+			\cline{1-4}
+			364 &2.1777e-2&2.8210 &1.3666\\	
+			\cline{1-4}
+			1088 &1.1274e-2&1.8207 &1.3804\\	
+			\hline
+	\end{tabular}}
+	\caption{自适应网格在不同单元格数时的误差}
+	\label{table:L}
+\end{table}
+在编写代码的过程中，我所碰到的困难和花费的精力主要在如何判断悬点、进行自适应剖分和建立差分方程上，而解方程则使用的matlab基本的求解器。推测可能是在自适应加细的过程中，在原点附近由于梯度趋近于无穷，相对于其他地方就更密，这就导致建立差分方程时，一部分步长的倒数的阶数远大于另一部分，由于解方程的方法是使用的matlab基本求解器(没有想到有很好的方法处理不规则稀疏矩阵)，且系数矩阵没有经过整理(没有想到该怎么去整理,因为后面的单元格剖分不规则)，导致形状很差，可能解方程的舍入误差占了主导地位，而第二题均匀剖分的系数矩阵形如图25，近似于分块三角阵，形状是很好的，而且各个系数大小相近，使得解得的结果就相对好。因此，自适应方法中再加细很难得到更好的结果，所耗费的时间也远远超过了均匀剖分，除非采用更好的存储系数矩阵和求解的方法。从这次实验看出，简单地套用自适应方法不一定能得到比均匀剖分更好的结果，也应该考虑如何让存储和求解方程更加有效。
 \end{document}
