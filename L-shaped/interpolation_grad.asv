@@ -11,6 +11,7 @@ if x >= -h && y >= 0
     b.y = 1-y-i*h;
     if y == h
         k = k-1;
+        b.x = h;
         b.y = h;
     end
     z1 = -u(k)*(h-b.y)-u(k+1)*b.y+u(k+N/2-1)*(h-b.y)+u(k+N/2)*b.y; z1 = z1/h^2;
@@ -24,10 +25,6 @@ else
     k = (j-N/2-1)*(N-1)+i+N/2*(N/2-1);
     b.x = 1-x-j*h;
     b.y = 1-y-i*h;
-    if y == -1+h
-        k = k-1;
-        b.y = h;
-    end 
     z1 = -u(k)*(h-b.y)-u(k+1)*b.y+u(k+N-1)*(h-b.y)+u(k+N)*b.y; z1 =z1/h^2;
     z2 = -u(k)*(h-b.x)+u(k+1)*(h-b.x)-u(k+N-1)*b.x+u(k+N)*b.x; z2 =z2/h^2;
     z = [z1,z2];

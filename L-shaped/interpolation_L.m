@@ -9,6 +9,10 @@ if x >= -h && y >= 0
     %b是右上角格子的坐标
     b.x = 1-x-j*h;
     b.y = 1-y-i*h;
+    if y == h
+        k = k-1;
+        b.y = h;
+    end
     y = u(k)*(h-b.x)*(h-b.y)+u(k+1)*(h-b.x)*b.y+u(k+N/2-1)*b.x*(h-b.y)+u(k+N/2)*b.x*b.y;
     y = y/h^2;
 else
@@ -19,6 +23,10 @@ else
     k = (j-N/2-1)*(N-1)+i+N/2*(N/2-1);
     b.x = 1-x-j*h;
     b.y = 1-y-i*h;
+    if y == -1+h
+        k = k-1;
+        b.y = h;
+    end
     y = u(k)*(h-b.x)*(h-b.y)+u(k+1)*(h-b.x)*b.y+u(k+N-1)*b.x*(h-b.y)+u(k+N)*b.x*b.y;
     y = y/h^2;
 end
